@@ -55,23 +55,23 @@ add_library(GameEngine STATIC
 # Define Include Directories
 target_include_directories(GameEngine
     PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/components>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/ecs>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/events>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/event_subscriptions>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/graphic>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/init>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/systems>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/systems/animation_system>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/systems/render_system>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/ecs/tppFiles>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/utils>
-        $<INSTALL_INTERFACE:include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/components>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/ecs>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/events>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/event_subscriptions>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/graphic>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/init>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/systems>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/systems/animation_system>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/systems/render_system>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/ecs/tppFiles>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/utils>
+        $<INSTALL_INTERFACE:include/GameEngine>
 
     PRIVATE
         src
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/logs>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/logs>
 )
 
 # Link Dependencies
