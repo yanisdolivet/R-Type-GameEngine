@@ -16,9 +16,8 @@ namespace Components
     }
 
     Clickable::Clickable(
-        float x, float y, int width, int height,
-        std::function<void(const Protocol::PacketManager&, std::shared_ptr<Client::NetworkHandler>)> onClick)
-        : _position(std::make_pair(x, y)), _size(std::make_pair(width, height)), _onClick(onClick)
+        float x, float y, int width, int height, std::function<void()> callback)
+        : _position(std::make_pair(x, y)), _size(std::make_pair(width, height)), _callback(callback)
     {
     }
 
@@ -41,9 +40,9 @@ namespace Components
         return std::make_pair(_position, _size);
     }
 
-    void Clickable::onClick(Protocol::PacketManager packetManager,
-                            std::shared_ptr<Client::NetworkHandler> network) const
-    {
-        this->_onClick(packetManager, network);
+    void Clickable::trigger() const {
+        if (_callback) {
+            _callback();
+        }
     }
 } // namespace Components

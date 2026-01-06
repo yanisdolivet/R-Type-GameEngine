@@ -18,15 +18,26 @@
 #include "SparseArray.hpp"
 #include "Zipper.hpp"
 
-class AnimationSystem
-{
-    public:
-        explicit AnimationSystem();
+class AnimationSystem {
+public:
+  explicit AnimationSystem();
 
-        void operator()(Registry&, SparseArray<Components::DrawableComponent>& drawable,
-                        SparseArray<Components::Position>& positions,
-                        SparseArray<Components::AnimationComponent>& animation,
-                        SparseArray<Components::Parallax>& parallax) const;
+  void operator()(Registry &,
+                  SparseArray<Components::DrawableComponent> &drawable,
+                  SparseArray<Components::Position> &positions,
+                  SparseArray<Components::AnimationComponent> &animation,
+                  SparseArray<Components::Parallax> &parallax) const;
 
-    private:
+private:
+  struct AnimationData {
+    int frames;
+    float duration;
+  };
+  struct AnimatorState {
+    bool loop;
+    AnimationData animation;
+    Vector2 origin;
+    Vector2 size;
+    Vector2 offset;
+  };
 };

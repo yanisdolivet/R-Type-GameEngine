@@ -28,7 +28,7 @@ void AnimationSystem::operator()(Registry&, SparseArray<Components::DrawableComp
 
     // BASIC SPRITE ANIMATION
     for (auto&& [dr, an] : Zipper(drawable, animaton)) {
-        Config::AnimatorState animState = an.getAnimationData(an.getCurrState());
+        AnimatorState animState = an.getAnimationData(an.getCurrState());
         int curframe                    = an.getCurrFrameIndex();
         an.updateTime();
 
