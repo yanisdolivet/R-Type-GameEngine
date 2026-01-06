@@ -14,7 +14,6 @@ find_package(spdlog REQUIRED)
 
 # Define the Library Target --> Move to SHARE later
 add_library(GameEngine STATIC
-    main.cpp
     src/Core.cpp
 
     src/components/AnimationComponent.cpp
@@ -55,7 +54,6 @@ add_library(GameEngine STATIC
 
 # Define Include Directories
 target_include_directories(GameEngine
-    # Any project linking this engine can see headers in 'include/'
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/components>
@@ -64,7 +62,6 @@ target_include_directories(GameEngine
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/event_subscriptions>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/graphic>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/init>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/logs>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/systems>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/systems/animation_system>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/systems/render_system>
@@ -72,9 +69,9 @@ target_include_directories(GameEngine
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/utils>
         $<INSTALL_INTERFACE:include>
 
-    # Only the engine itself can see headers in 'src/'
     PRIVATE
         src
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/logs>
 )
 
 # Link Dependencies
