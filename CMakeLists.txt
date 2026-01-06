@@ -67,11 +67,11 @@ target_include_directories(GameEngine
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/systems/render_system>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/ecs/tppFiles>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/utils>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/logs>
         $<INSTALL_INTERFACE:include/GameEngine>
 
     PRIVATE
         src
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/GameEngine/logs>
 )
 
 # Link Dependencies
