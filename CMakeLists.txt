@@ -7,6 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 
+# Export compile_commands.json file into 'build' folder
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Find Conan packages
 find_package(raylib REQUIRED)
 find_package(GTest REQUIRED)
@@ -48,6 +51,11 @@ add_library(GameEngine STATIC
     src/systems/render_system/RenderSystem.cpp
     src/systems/render_system/ResourceManager.cpp
 
+)
+
+# Set executable at root of project
+set_target_properties(GameEngine PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}"
 )
 
 # Define Include Directories
