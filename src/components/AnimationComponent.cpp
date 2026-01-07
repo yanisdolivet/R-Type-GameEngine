@@ -85,7 +85,7 @@ namespace Components
         auto currentTime                      = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = currentTime - this->_lastTime;
 
-        this->_elapsed_time = elapsed.count();
+        this->_elapsed_time = static_cast<float>(elapsed.count());
     }
 
     bool AnimationComponent::isFinished() const
