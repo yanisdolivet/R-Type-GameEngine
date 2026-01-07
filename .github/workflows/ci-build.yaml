@@ -9,7 +9,8 @@ on:
       - "gh-pages"
 
 env:
-  LIBRARIES: "libGameEngine.a"
+  LIBRARIES_LINUX: "libGameEngine.a"
+  LIBRARIES_WIN: "GameEngine.lib"
 
 jobs:
   check_compilation_linux:
@@ -74,7 +75,7 @@ jobs:
                                   libxcb-util0-dev \
                                   libxcb-util-dev \
                                   xvfb
-      
+
       - name: Setup Dummy Audio Driver
         run: |
           echo "pcm.!default { type plug; slave.pcm \"null\"; }" > ~/.asoundrc
@@ -83,7 +84,7 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.13'
-      
+
       - name: Install conan and gcovr
         run: pip install conan gcovr
 
@@ -122,7 +123,7 @@ jobs:
 
       - name: Build project
         run: cmake --build --preset conan-debug
-      
+
       # - name: Run unit tests
       #   run: xvfb-run --auto-servernum ctest --test-dir build/Debug/ --output-on-failure
 
@@ -142,10 +143,10 @@ jobs:
       #   with:
       #     name: coverage-report
       #     path: coverage.html
-      
+
       - name: Check if LIBRARIES exist
         run: |
-          for BINARY in $(echo ${{ env.LIBRARIES }} | tr "," "\n"); do
+          for BINARY in $(echo ${{ env.LIBRARIES_LINUX }} | tr "," "\n"); do
             BINARY_PATH=$(find "$(pwd)" -name "$BINARY" -type f | head -n 1)
             if [ -z "$BINARY_PATH" ]; then
               echo "Error during compilation !"
@@ -154,41 +155,41 @@ jobs:
               echo "Found $BINARY at $BINARY_PATH"
             fi
           done
-          
+
   check_compilation_windows:
       name: Check compilation on Windows
       runs-on: windows-latest
       if: github.repository != 'EpitechPGE3-2025/G-CPP-500-LYN-5-2-rtype-6'
-  
+
       steps:
         - name: Checkout repository
           uses: actions/checkout@v5
-  
+
         - name: Install Conan
           run: pip install conan
-  
+
         - name: Cache Conan packages
           uses: actions/cache@v4
           with:
             path: ~/.conan2/p
             key: ${{ runner.os }}-conan-${{ hashFiles('conanfile.txt', 'conanfile.py') }}
             restore-keys: ${{ runner.os }}-conan-
-  
+
         - name: Conan generate build directory
           run: |
             conan profile detect --force
             conan install . --build=missing -s compiler.cppstd=20 -s build_type=Release
-  
+
         - name: Configure CMake
           run: cmake --preset conan-default
-  
+
         - name: Build project
           run: cmake --build --preset conan-release
-  
+
         - name: Check if LIBRARIES exist
           shell: bash
           run: |
-            for BINARY in $(echo ${{ env.LIBRARIES }} | tr "," "\n"); do
+            for BINARY in $(echo ${{ env.LIBRARIES_WIN }} | tr "," "\n"); do
               BINARY_PATH=$(find "$(pwd)" -name "$BINARY" -type f | head -n 1)
               if [ -z "$BINARY_PATH" ]; then
                 echo "Error during compilation !"
