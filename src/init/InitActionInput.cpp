@@ -7,7 +7,7 @@
 
 #include "InitActionInput.hpp"
 
-#include "CoreEvents.hpp"
+#include "GameEngineEvents.hpp"
 
 std::unordered_map<std::string, ActionBinding> getActionBindings()
 {

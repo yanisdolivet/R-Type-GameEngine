@@ -7,7 +7,7 @@
 
 #include "InputSystem.hpp"
 
-#include "CoreEvents.hpp"
+#include "GameEngineEvents.hpp"
 
 InputSystem::InputSystem(std::shared_ptr<std::unordered_map<int, std::vector<std::function<void(Registry&)>>>> keymap,
                          std::function<bool(int key)> IsKeyDown)
