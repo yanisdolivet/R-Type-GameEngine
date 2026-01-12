@@ -56,7 +56,4 @@ struct EventRight
 
 struct EventLeftClick
 {
-        float x;
-        float y;
-        bool pressed;
 };
