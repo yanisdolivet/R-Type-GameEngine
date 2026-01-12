@@ -108,6 +108,19 @@ Component& Registry::getSpecificComponent(Entity const& entity)
     }
 }
 
+template <class Component>
+bool Registry::entity_has_component(Entity entity) const
+{
+    const auto& components = this->getComponents<Component>();
+
+    if (entity >= components.size())
+        return false;
+
+    return components[entity].has_value();
+}
+
+
+
 /**
  * @brief Remove a component of type Component from a given entity
  *
@@ -134,8 +147,8 @@ template <class... Components, typename Function>
 void Registry::addSystem(Function&& func)
 {
     // Lambda wrap
-    auto wrapped_system = [func](Registry& reg) {
-        func(reg, reg.getComponents<Components>()...);
+    auto wrapped_system = [func](Registry& reg, double deltaTime) {
+        func(reg, deltaTime, reg.getComponents<Components>()...);
     };
 
     this->_systems.push_back(wrapped_system);

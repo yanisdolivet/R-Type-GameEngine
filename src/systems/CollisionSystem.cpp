@@ -16,7 +16,7 @@
  * @param positions
  * @param hitboxes
  */
-void CollisionSystem::operator()(Registry& registry, SparseArray<Components::Position>& positions,
+void CollisionSystem::operator()(Registry& registry, double, SparseArray<Components::Position>& positions,
                                  SparseArray<Components::Collider> const& colliders) const
 {
     for (auto&& [idxA, posA, colliderA] : IndexedZipper(positions, colliders)) {
