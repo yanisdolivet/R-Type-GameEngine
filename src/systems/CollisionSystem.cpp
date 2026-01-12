@@ -7,7 +7,7 @@
 
 #include "CollisionSystem.hpp"
 
-#include "CoreEvents.hpp"
+#include "GameEngineEvents.hpp"
 
 /**
  * @brief Detect and publish collision events between entities

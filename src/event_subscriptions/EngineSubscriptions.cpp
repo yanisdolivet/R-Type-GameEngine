@@ -11,7 +11,7 @@
 
 #include "Collider.hpp"
 #include "Controllable.hpp"
-#include "CoreEvents.hpp"
+#include "GameEngineEvents.hpp"
 #include "IndexedZipper.hpp"
 
 void Common::initEngineSubscriptions(GameEngine::Core& engine)
