@@ -50,8 +50,8 @@ void RenderSystem::operator()(Registry& reg, double, SparseArray<Components::Pos
     // Render in sorted order
     for (const auto& renderData : renderQueue) {
         std::pair<float, float> position                  = {renderData.pos->getX(), renderData.pos->getY()};
-        Rectangle spriteRect                              = renderData.dr->getSourceRect();
-        Vector2 spriteScale                               = renderData.dr->getScale();
+        GameEngine::Math::Rectangle spriteRect            = renderData.dr->getSourceRect();
+        GameEngine::Math::Vector2 spriteScale             = renderData.dr->getScale();
         std::pair<unsigned int, unsigned int> sizeSection = {static_cast<unsigned int>(spriteRect.width),
                                                              static_cast<unsigned int>(spriteRect.height)};
         std::pair<float, float> spriteSection             = {spriteRect.x, spriteRect.y};

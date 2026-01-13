@@ -14,7 +14,8 @@ namespace Components
     {
     }
 
-    DrawableComponent::DrawableComponent(Rectangle source_rect, bool is_visible, Vector2 scale, int layer)
+    DrawableComponent::DrawableComponent(GameEngine::Math::Rectangle source_rect, bool is_visible,
+                                         GameEngine::Math::Vector2 scale, int layer)
         : _source_rect(source_rect), _is_visible(is_visible), _scale(scale), _layer(layer)
     {
     }
@@ -23,7 +24,7 @@ namespace Components
     {
     }
 
-    Rectangle DrawableComponent::getSourceRect() const
+    GameEngine::Math::Rectangle DrawableComponent::getSourceRect() const
     {
         return this->_source_rect;
     }
@@ -33,7 +34,7 @@ namespace Components
         return this->_is_visible;
     }
 
-    Vector2 DrawableComponent::getScale() const
+    GameEngine::Math::Vector2 DrawableComponent::getScale() const
     {
         return this->_scale;
     }
@@ -48,12 +49,12 @@ namespace Components
         this->_is_visible = visible;
     }
 
-    void DrawableComponent::setRectange(Rectangle new_source_rect)
+    void DrawableComponent::setRectange(GameEngine::Math::Rectangle new_source_rect)
     {
         this->_source_rect = new_source_rect;
     }
 
-    void DrawableComponent::setScale(Vector2 scale)
+    void DrawableComponent::setScale(GameEngine::Math::Vector2 scale)
     {
         this->_scale = scale;
     }
