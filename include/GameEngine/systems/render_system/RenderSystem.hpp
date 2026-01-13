@@ -9,8 +9,8 @@
 
 #include <memory>
 
-#include "CoreEvents.hpp"
 #include "DrawableComponent.hpp"
+#include "GameEngineEvents.hpp"
 #include "IRender.hpp"
 #include "IndexedZipper.hpp"
 #include "Position.hpp"
