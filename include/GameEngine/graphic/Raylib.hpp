@@ -207,6 +207,12 @@ namespace Graphic
              */
             std::pair<float, float> getMousePosition() const override;
 
+            /**
+             * @brief Get the current window size
+             * @return std::pair<float, float> The (width, height) of the window
+             */
+            std::pair<float, float> getWindowSize() const;
+
         private:
             /**
              * @brief A map storing textures with their associated names

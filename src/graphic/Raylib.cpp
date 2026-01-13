@@ -239,3 +239,8 @@ std::pair<float, float> Graphic::Raylib::getMousePosition() const
     Vector2 mousePos = GetMousePosition();
     return std::make_pair(mousePos.x, mousePos.y);
 }
+
+std::pair<float, float> Graphic::Raylib::getWindowSize() const
+{
+    return std::make_pair((float)GetScreenWidth(), (float)GetScreenHeight());
+}
