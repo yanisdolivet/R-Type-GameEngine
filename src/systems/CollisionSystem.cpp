@@ -39,6 +39,7 @@ void CollisionSystem::operator()(Registry& registry, double, SparseArray<Compone
 
             if (collisionX && collisionY) {
                 registry.publish(EventCollision{static_cast<Entity>(idxA), static_cast<Entity>(idxB)});
+                std::cout << "Collision detected between Entity " << idxA << " and Entity " << idxB << std::endl;
             }
         }
     }
