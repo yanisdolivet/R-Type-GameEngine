@@ -51,6 +51,7 @@ add_library(GameEngine STATIC
     src/systems/animation_system/AnimationSystem.cpp
     src/systems/render_system/RenderSystem.cpp
     src/systems/render_system/ResourceManager.cpp
+    src/systems/InputPressedSystem.cpp
 
 )
 
