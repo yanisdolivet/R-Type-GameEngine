@@ -38,7 +38,8 @@ void CollisionSystem::operator()(Registry& registry, double, SparseArray<Compone
                               posA.getY() + colliderA.getHeight() * scaleA.getY() > posB.getY();
 
             if (collisionX && collisionY) {
-                registry.publish(EventCollision{static_cast<Entity>(idxA), static_cast<Entity>(idxB)});
+                registry.publish(EventCollision{static_cast<Entity>(idxA), colliderA.getType(),
+                                                static_cast<Entity>(idxB), colliderB.getType()});
             }
         }
     }
