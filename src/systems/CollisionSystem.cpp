@@ -21,7 +21,7 @@ void CollisionSystem::operator()(Registry& registry, double, SparseArray<Compone
 {
     for (auto&& [idxA, posA, colliderA] : IndexedZipper(positions, colliders)) {
         for (auto&& [idxB, posB, colliderB] : IndexedZipper(positions, colliders)) {
-            if (idxA >= idxB || colliderA.getType() == colliderB.getType())
+            if (idxA >= idxB)
                 continue;
 
             bool collisionX =
@@ -31,7 +31,6 @@ void CollisionSystem::operator()(Registry& registry, double, SparseArray<Compone
 
             if (collisionX && collisionY) {
                 registry.publish(EventCollision{static_cast<Entity>(idxA), static_cast<Entity>(idxB)});
-                std::cout << "Collision detected between Entity " << idxA << " and Entity " << idxB << std::endl;
             }
         }
     }
