@@ -36,3 +36,10 @@ void ResourceManager::loadSoundsFromMap(const std::map<std::string, std::string>
         _audioLoader.addSound(path, name);
     }
 }
+
+void ResourceManager::loadMusicsFromMap(const std::map<std::string, std::string>& musics)
+{
+    for (const auto& [name, path] : musics) {
+        _audioLoader.addMusic(path, name);
+    }
+}
