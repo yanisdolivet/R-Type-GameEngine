@@ -270,3 +270,10 @@ std::pair<float, float> Graphic::Raylib::getWindowSize() const
 {
     return std::make_pair((float)GetScreenWidth(), (float)GetScreenHeight());
 }
+
+void Graphic::Raylib::updateMusicStream()
+{
+    for (const auto& [key, val] : this->_musics) {
+        UpdateMusicStream(val);
+    }
+}

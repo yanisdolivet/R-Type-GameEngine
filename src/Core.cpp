@@ -8,8 +8,8 @@
 #include "Core.hpp"
 
 #include <iostream>
-#include <thread>
 #include <raylib.h>
+#include <thread>
 
 /**
  * @brief Construct a new Core object
@@ -55,7 +55,6 @@ void GameEngine::Core::run()
     while (this->_isRunning) {
         this->_updateTime(lastFrameTime, frameDuration);
         this->_registry.runSystems(_deltaTime);
-        UpdateMusicStream(); // TEST
     }
 }
 
