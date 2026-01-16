@@ -7,7 +7,14 @@
 
 #pragma once
 
+#include <iostream>
+
+#include "Collider.hpp"
+#include "Controllable.hpp"
 #include "Core.hpp"
+#include "GameEngineEvents.hpp"
+#include "IndexedZipper.hpp"
+#include "SceneManager.hpp"
 
 namespace Common
 {
@@ -16,6 +23,6 @@ namespace Common
      *
      * @param engine
      */
-    void initEngineSubscriptions(GameEngine::Core& engine);
+    void initEngineSubscriptions(GameEngine::Core& engine, SceneManager& sceneManager);
 
 } // namespace Common
