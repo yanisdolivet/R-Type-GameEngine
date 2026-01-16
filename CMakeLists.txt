@@ -53,6 +53,7 @@ add_library(GameEngine STATIC
     src/systems/render_system/ResourceManager.cpp
     src/systems/InputPressedSystem.cpp
     src/components/TextComponent.cpp
+    src/systems/render_system/AudioSystem.cpp
 
 )
 

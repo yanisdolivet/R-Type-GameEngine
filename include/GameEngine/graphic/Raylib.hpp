@@ -232,6 +232,12 @@ namespace Graphic
              */
             std::pair<float, float> getWindowSize() const;
 
+            /**
+             * @brief Update the music stream
+             *
+             */
+            void updateMusicStream() override;
+
         private:
             /**
              * @brief A map storing textures with their associated names
