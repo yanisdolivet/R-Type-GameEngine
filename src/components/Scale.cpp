@@ -15,7 +15,6 @@ Components::Scale::~Scale()
 {
 }
 
-
 Components::Scale::Scale(int x, int y) : _x(x), _y(y)
 {
 }
@@ -44,4 +43,3 @@ bool Components::Scale::operator==(const Scale& other) const
 {
     return _x == other._x && _y == other._y;
 }
-

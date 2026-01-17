@@ -31,7 +31,7 @@ namespace Components
         private:
             Rectangle _source_rect;
             bool _is_visible;
-            int _layer     = 0; // Lower values render first (background), higher values render last (foreground)
+            int _layer = 0; // Lower values render first (background), higher values render last (foreground)
     };
 
 } // namespace Components

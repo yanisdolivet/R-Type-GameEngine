@@ -42,7 +42,8 @@ void RenderSystem::operator()(Registry& reg, double, SparseArray<Components::Pos
             Components::Scale scale;
             try {
                 scale = reg.getSpecificComponent<Components::Scale>(reg.entityFromIndex(idx));
-            } catch (const std::logic_error&) {
+            }
+            catch (const std::logic_error&) {
                 continue;
             }
             renderQueue.push_back({idx, dr.getLayer(), &pos, &sp, &dr, &scale});

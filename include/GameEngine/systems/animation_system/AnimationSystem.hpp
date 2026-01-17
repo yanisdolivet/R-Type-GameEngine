@@ -15,9 +15,9 @@
 #include "Parallax.hpp"
 #include "Position.hpp"
 #include "Registry.hpp"
+#include "Scale.hpp"
 #include "SparseArray.hpp"
 #include "Zipper.hpp"
-#include "Scale.hpp"
 
 class AnimationSystem
 {

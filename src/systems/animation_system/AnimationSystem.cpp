@@ -21,7 +21,8 @@ void AnimationSystem::operator()(Registry& registry, double, SparseArray<Compone
         Components::Scale scale;
         try {
             scale = registry.getSpecificComponent<Components::Scale>(registry.entityFromIndex(idx));
-        } catch (const std::logic_error&) {
+        }
+        catch (const std::logic_error&) {
             continue;
         }
         float maxPos = -(dr.getSourceRect().width * scale.getX());

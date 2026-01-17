@@ -9,8 +9,7 @@
 
 namespace Components
 {
-    DrawableComponent::DrawableComponent()
-        : _source_rect({0, 0, 0, 0}), _is_visible(true), _layer(0)
+    DrawableComponent::DrawableComponent() : _source_rect({0, 0, 0, 0}), _is_visible(true), _layer(0)
     {
     }
 
