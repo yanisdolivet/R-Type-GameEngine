@@ -19,11 +19,8 @@ void AnimationSystem::operator()(Registry& registry, double, SparseArray<Compone
     // PARALLAX ANIMATION
     for (auto&& [idx, dr, pos, pr] : IndexedZipper(drawable, positions, parallax)) {
         Components::Scale scale = Components::Scale();
-        try {
+        if (registry.entity_has_component<Components::Scale>(registry.entityFromIndex(idx))) {
             scale = registry.getSpecificComponent<Components::Scale>(registry.entityFromIndex(idx));
-        }
-        catch (const std::logic_error&) {
-            continue;
         }
         float maxPos = -(dr.getSourceRect().width * scale.getX());
         pos.setX(pos.getX() - pr.getSpeed());
