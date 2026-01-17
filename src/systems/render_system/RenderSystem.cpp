@@ -38,21 +38,23 @@ void RenderSystem::operator()(Registry& reg, double, SparseArray<Components::Pos
     std::vector<RenderData> renderQueue;
     renderQueue.reserve(100); // Pre-allocate to avoid reallocations
 
-    for (auto&& [idx, pos, sp, dr] : IndexedZipper(positions, sprite, drawable)) {
+     for (auto&& [idx, pos, sp, dr] : IndexedZipper(positions, sprite, drawable)) {
         if (dr.isVisible()) {
             std::cout << "Rendering entity at index: " + std::to_string(idx) + " on layer: " + std::to_string(dr.getLayer()) << std::endl;
-            Components::Scale scale = Components::Scale(1,1);
             std::cout << "Attempting to get scale component for entity at index: " + std::to_string(idx) << std::endl;
             try {
                 std::cout << "in the try block" << std::endl;
-                scale = reg.getSpecificComponent<Components::Scale>(reg.entityFromIndex(idx));
+                auto &scale = reg.getSpecificComponent<Components::Scale>(reg.entityFromIndex(idx));
+                renderQueue.push_back({idx, dr.getLayer(), &pos, &sp, &dr, &scale});
+
                 std::cout << "Successfully retrieved scale component for entity at index: " + std::to_string(idx) << std::endl;
             }
             catch (const std::logic_error&) {
+                renderQueue.push_back({idx, dr.getLayer(), &pos, &sp, &dr, {new Components::Scale(1.0f, 1.0f)}});
+
                 std::cout << "No scale component found for entity at index: " + std::to_string(idx) << std::endl;
                 continue;
             }
-            renderQueue.push_back({idx, dr.getLayer(), &pos, &sp, &dr, &scale});
         }
     }
 
