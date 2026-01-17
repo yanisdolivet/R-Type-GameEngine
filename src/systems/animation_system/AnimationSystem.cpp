@@ -23,9 +23,7 @@ void AnimationSystem::operator()(Registry& registry, double, SparseArray<Compone
             auto &scale = registry.getSpecificComponent<Components::Scale>(registry.entityFromIndex(idx));
             scaleTemp.setX(scale.getX());
             scaleTemp.setY(scale.getY());
-            std::cout << "Entity " << idx << " has scale (" << scale.getX() << ", " << scale.getY() << ") And it should work\n";
         }
-        std::cout << "Entity " << idx << " has scale (" << scaleTemp.getX() << ", " << scaleTemp.getY() << ")\n";
 
         float maxPos = -(dr.getSourceRect().width * scaleTemp.getX());
         pos.setX(pos.getX() - pr.getSpeed());
