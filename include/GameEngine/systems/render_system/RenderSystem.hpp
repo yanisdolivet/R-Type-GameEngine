@@ -17,6 +17,7 @@
 #include "Registry.hpp"
 #include "SparseArray.hpp"
 #include "SpriteComponent.hpp"
+#include "Scale.hpp"
 
 class RenderSystem
 {

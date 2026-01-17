@@ -17,6 +17,7 @@
 #include "Registry.hpp"
 #include "SparseArray.hpp"
 #include "Zipper.hpp"
+#include "Scale.hpp"
 
 class AnimationSystem
 {
