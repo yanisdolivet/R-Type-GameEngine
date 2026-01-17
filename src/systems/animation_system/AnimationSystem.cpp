@@ -21,6 +21,7 @@ void AnimationSystem::operator()(Registry& registry, double, SparseArray<Compone
         Components::Scale scale = Components::Scale();
         if (registry.entity_has_component<Components::Scale>(registry.entityFromIndex(idx))) {
             scale = registry.getSpecificComponent<Components::Scale>(registry.entityFromIndex(idx));
+            std::cout << "Entity " << idx << " has scale (" << scale.getX() << ", " << scale.getY() << ") And it should work\n";
         }
         std::cout << "Entity " << idx << " has scale (" << scale.getX() << ", " << scale.getY() << ")\n";
 
