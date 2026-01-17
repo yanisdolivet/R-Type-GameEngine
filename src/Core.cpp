@@ -61,7 +61,7 @@ void GameEngine::Core::update()
     auto frameDuration = FRAME_DURATION;
     auto lastFrameTime = std::chrono::steady_clock::now();
 
-    this->_updateTime(this->_lastTime, FRAME_DURATION);
+    this->_updateTime(lastFrameTime, frameDuration);
     this->_registry.runSystems(this->_deltaTime);
 }
 
