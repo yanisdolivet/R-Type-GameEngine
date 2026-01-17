@@ -41,10 +41,12 @@ void RenderSystem::operator()(Registry& reg, double, SparseArray<Components::Pos
     for (auto&& [idx, pos, sp, dr] : IndexedZipper(positions, sprite, drawable)) {
         if (dr.isVisible()) {
             std::cout << "Rendering entity at index: " + std::to_string(idx) + " on layer: " + std::to_string(dr.getLayer()) << std::endl;
-            Components::Scale scale = Components::Scale();
+            Components::Scale scale = Components::Scale(1,1);
             std::cout << "Attempting to get scale component for entity at index: " + std::to_string(idx) << std::endl;
             try {
+                std::cout << "in the try block" << std::endl;
                 scale = reg.getSpecificComponent<Components::Scale>(reg.entityFromIndex(idx));
+                std::cout << "Successfully retrieved scale component for entity at index: " + std::to_string(idx) << std::endl;
             }
             catch (const std::logic_error&) {
                 std::cout << "No scale component found for entity at index: " + std::to_string(idx) << std::endl;
