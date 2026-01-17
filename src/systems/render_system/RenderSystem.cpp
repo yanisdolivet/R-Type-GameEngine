@@ -42,10 +42,12 @@ void RenderSystem::operator()(Registry& reg, double, SparseArray<Components::Pos
         if (dr.isVisible()) {
             std::cout << "Rendering entity at index: " + std::to_string(idx) + " on layer: " + std::to_string(dr.getLayer()) << std::endl;
             Components::Scale scale = Components::Scale();
+            std::cout << "Attempting to get scale component for entity at index: " + std::to_string(idx) << std::endl;
             try {
                 scale = reg.getSpecificComponent<Components::Scale>(reg.entityFromIndex(idx));
             }
             catch (const std::logic_error&) {
+                std::cout << "No scale component found for entity at index: " + std::to_string(idx) << std::endl;
                 continue;
             }
             renderQueue.push_back({idx, dr.getLayer(), &pos, &sp, &dr, &scale});
