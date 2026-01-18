@@ -23,15 +23,11 @@ void CollisionSystem::operator()(Registry& registry, double, SparseArray<Compone
         for (auto&& [idxB, posB, colliderB] : IndexedZipper(positions, colliders)) {
             Components::Scale scaleA(1.0f, 1.0f);
             Components::Scale scaleB(1.0f, 1.0f);
-            try {
+            if (registry.entity_has_component<Components::Scale>(registry.entityFromIndex(idxA))) {
                 scaleA = registry.getSpecificComponent<Components::Scale>(registry.entityFromIndex(idxA));
             }
-            catch (const std::logic_error&) {
-            }
-            try {
+            if (registry.entity_has_component<Components::Scale>(registry.entityFromIndex(idxB))) {
                 scaleB = registry.getSpecificComponent<Components::Scale>(registry.entityFromIndex(idxB));
-            }
-            catch (const std::logic_error&) {
             }
             if (idxA >= idxB || colliderA.getType() == colliderB.getType())
                 continue;
