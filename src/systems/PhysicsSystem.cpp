@@ -14,11 +14,11 @@
  * @param positions
  * @param velocities
  */
-void PhysicsSystem::operator()(Registry&, double, SparseArray<Components::Position>& positions,
+void PhysicsSystem::operator()(Registry&, double delta_time, SparseArray<Components::Position>& positions,
                                SparseArray<Components::Velocity> const& velocities) const
 {
     for (auto&& [pos, vel] : Zipper(positions, velocities)) {
-        pos.setX(pos.getX() + vel.getVx());
-        pos.setY(pos.getY() + vel.getVy());
+        pos.setX(pos.getX() + (vel.getVx() * delta_time));
+        pos.setY(pos.getY() + (vel.getVy() * delta_time));
     }
 }
