@@ -11,17 +11,22 @@ AnimationSystem::AnimationSystem()
 {
 }
 
-void AnimationSystem::operator()(Registry&, double, SparseArray<Components::DrawableComponent>& drawable,
+void AnimationSystem::operator()(Registry& registry, double, SparseArray<Components::DrawableComponent>& drawable,
                                  SparseArray<Components::Position>& positions,
                                  SparseArray<Components::AnimationComponent>& animation,
                                  SparseArray<Components::Parallax>& parallax) const
 {
     // PARALLAX ANIMATION
-    for (auto&& [dr, pos, pr] : Zipper(drawable, positions, parallax)) {
-        float maxPos = -(dr.getSourceRect().width * dr.getScale().x);
+    for (auto&& [idx, dr, pos, pr] : IndexedZipper(drawable, positions, parallax)) {
+        Components::Scale scaleTemp =
+            registry.entity_has_component<Components::Scale>(registry.entityFromIndex(idx))
+                ? registry.getSpecificComponent<Components::Scale>(registry.entityFromIndex(idx))
+                : Components::Scale();
+
+        float maxPos = -(dr.getSourceRect().width * scaleTemp.getX());
         pos.setX(pos.getX() - pr.getSpeed());
         if (pos.getX() <= maxPos) {
-            float newPos = dr.getSourceRect().width * dr.getScale().x;
+            float newPos = dr.getSourceRect().width * scaleTemp.getX();
             pos.setX(newPos);
         }
         continue;
