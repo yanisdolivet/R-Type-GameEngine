@@ -38,6 +38,7 @@ void Graphic::Raylib::initWindow(int width, int height, std::string const& title
 
 void Graphic::Raylib::closeWindow()
 {
+    rlImGuiShutdown(); // Shutdown ImGui Window
     CloseWindow();
 }
 
