@@ -29,7 +29,9 @@ void ImGuiSystem::operator()(Registry& registry, double) const
     for (std::size_t i = 0; i < numSystems; ++i) {
         bool enabled = registry.isSystemEnabled(i);
         ImGui::PushID(static_cast<int>(i));
-        if (ImGui::Checkbox(_systemName[i].c_str(), &enabled)) {
+        // Use bounds-checked access to avoid out-of-bounds errors
+        const char* systemName = (i < _systemName.size()) ? _systemName[i].c_str() : "Unknown System";
+        if (ImGui::Checkbox(systemName, &enabled)) {
             // Toggle system on checkbox change
             if (enabled) {
                 registry.enableSpecificSystem(i);
