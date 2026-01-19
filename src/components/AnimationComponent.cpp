@@ -52,6 +52,11 @@ namespace Components
         return this->_elapsed_time;
     }
 
+    void AnimationComponent::setAnimationOringin(const GameEngine::Math::Vector2& origin)
+    {
+        this->_animation[this->_curr_state].origin = origin;
+    }
+
     void AnimationComponent::setCurrentState(const std::string& next_step)
     {
         if (this->_animation.find(next_step) == this->_animation.end()) {

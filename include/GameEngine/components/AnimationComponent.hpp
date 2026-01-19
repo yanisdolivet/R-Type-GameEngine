@@ -32,6 +32,7 @@ namespace Components
             int getCurrFrameIndex() const;
             float getTimeOfFrame() const;
 
+            void setAnimationOringin(const GameEngine::Math::Vector2& origin);
             void setCurrentState(const std::string& next_step);
             void resetElapsedTime();
             void updateElapsedTime(const float dt);
