@@ -52,7 +52,7 @@ namespace Components
         return this->_elapsed_time;
     }
 
-    void AnimationComponent::setAnimationOringin(const GameEngine::Math::Vector2& origin)
+    void AnimationComponent::setAnimationOringin(std::string animation, const GameEngine::Math::Vector2& origin)
     {
         this->_animation[this->_curr_state].origin = origin;
     }
