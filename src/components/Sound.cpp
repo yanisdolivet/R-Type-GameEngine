@@ -20,12 +20,12 @@ Components::Sound::~Sound()
 {
 }
 
-std::string Components::Sound::getOnSpawnSound() const
+const std::string& Components::Sound::getOnSpawnSound() const
 {
     return _onSpawnSound;
 }
 
-std::string Components::Sound::getOnDestroySound() const
+const std::string& Components::Sound::getOnDestroySound() const
 {
     return _onDestroySound;
 }
