@@ -71,6 +71,8 @@ class Registry
 
         std::size_t getEntitiesCount() const;
 
+        void resetEntitiesCount();
+
     private:
         std::unordered_map<std::type_index, std::any> _componentsArrays;
         std::size_t _entitiesCount = 0;

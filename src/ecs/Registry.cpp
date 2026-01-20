@@ -64,6 +64,15 @@ std::size_t Registry::getEntitiesCount() const
 }
 
 /**
+ * @brief Reset the entities count to zero
+ *
+ */
+void Registry::resetEntitiesCount()
+{
+    this->_entitiesCount = 0;
+}
+
+/**
  * @brief Get all registered systems
  *
  * @return std::vector<std::function<void(Registry&, double)>>&
