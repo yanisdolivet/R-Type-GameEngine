@@ -26,11 +26,13 @@ namespace Components
             AnimationComponent(const std::map<std::string, AnimatorState>& animation, const std::string& curr_state);
             ~AnimationComponent();
 
+            std::map<std::string, AnimatorState> getAllAnimations() const;
             AnimatorState getAnimationData(std::string animation) const;
             std::string getCurrState() const;
             int getCurrFrameIndex() const;
             float getTimeOfFrame() const;
 
+            void setAnimationOrigin(std::string animation, const GameEngine::Math::Vector2& origin);
             void setCurrentState(const std::string& next_step);
             void resetElapsedTime();
             void updateElapsedTime(const float dt);

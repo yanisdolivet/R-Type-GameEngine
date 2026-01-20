@@ -27,6 +27,11 @@ namespace Components
     {
     }
 
+    std::map<std::string, AnimatorState> AnimationComponent::getAllAnimations() const
+    {
+        return this->_animation;
+    }
+
     AnimatorState AnimationComponent::getAnimationData(std::string animation) const
     {
         return this->_animation.at(animation);
@@ -45,6 +50,11 @@ namespace Components
     float AnimationComponent::getTimeOfFrame() const
     {
         return this->_elapsed_time;
+    }
+
+    void AnimationComponent::setAnimationOrigin(std::string animation, const GameEngine::Math::Vector2& origin)
+    {
+        this->_animation[animation].origin = origin;
     }
 
     void AnimationComponent::setCurrentState(const std::string& next_step)
